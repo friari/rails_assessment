@@ -4,4 +4,5 @@ class Mentor < ApplicationRecord
   has_many :skills, through: :mentors_skills
   has_many :reviews
   has_many :bookings
+  has_one_attached :picture
 end
