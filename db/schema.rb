@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_043122) do
+ActiveRecord::Schema.define(version: 2019_04_30_051853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "country"
+    t.string "state"
+    t.string "street"
+    t.string "suburb"
+    t.integer "postcode"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "mentor_id"
+    t.string "stripe_transaction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_bookings_on_mentor_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "mentors", force: :cascade do |t|
+    t.float "rate"
+    t.text "about_me"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mentors_on_user_id"
+  end
+
+  create_table "mentors_skills", force: :cascade do |t|
+    t.bigint "mentor_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_mentors_skills_on_mentor_id"
+    t.index ["skill_id"], name: "index_mentors_skills_on_skill_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "body"
+    t.integer "rating"
+    t.bigint "mentor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_reviews_on_mentor_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "skills"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +80,20 @@ ActiveRecord::Schema.define(version: 2019_04_30_043122) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "date_of_birth"
+    t.integer "contact_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "bookings", "mentors"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "mentors", "users"
+  add_foreign_key "mentors_skills", "mentors"
+  add_foreign_key "mentors_skills", "skills"
+  add_foreign_key "reviews", "mentors"
+  add_foreign_key "reviews", "users"
 end
