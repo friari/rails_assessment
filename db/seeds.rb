@@ -14,3 +14,26 @@ if Skill.count == 0
         puts "created #{skill}"
     end
 end
+
+# 20.times do |i|
+    
+
+#     User.create (
+#         first_name: Faker::Name.first_name, 
+#         last_name: Faker::Name.last_name,
+#         email: Faker::Internet.email,
+#         date_of_birth: Faker::Date.birthday(18, 65),
+#         contact_number: Faker::PhoneNumber.cell_phone,
+#         country: Faker::Address.country,
+#         state: Faker::Address.state,
+#         postcode: Faker::Address.postcode,
+#         suburb: Faker::Address.city,
+#         password: user.password = "test123",
+#         password_confirmation: user.password = "test123",
+#     )
+     
+
+
+#     puts "created #{i}"
+
+# end
