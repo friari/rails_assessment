@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_054422) do
+ActiveRecord::Schema.define(version: 2019_05_01_040745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,18 +34,6 @@ ActiveRecord::Schema.define(version: 2019_04_30_054422) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "country"
-    t.string "state"
-    t.string "street"
-    t.string "suburb"
-    t.integer "postcode"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -105,12 +93,16 @@ ActiveRecord::Schema.define(version: 2019_04_30_054422) do
     t.string "last_name"
     t.integer "date_of_birth"
     t.integer "contact_number"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "suburb"
+    t.integer "postcode"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
   add_foreign_key "bookings", "mentors"
   add_foreign_key "bookings", "users"
   add_foreign_key "mentors", "users"

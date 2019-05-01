@@ -26,12 +26,11 @@ end
 #         state: Faker::Address.state,
 #         postcode: Faker::Address.postcode,
 #         suburb: Faker::Address.city,
-#         password: user.password = "test123",
-#         password_confirmation: user.password = "test123",
+#         password: "test123",
 #     )
      
 
 
 #     puts "created #{i}"
 
-# end
+end
