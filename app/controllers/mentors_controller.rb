@@ -1,7 +1,5 @@
 class MentorsController < ApplicationController
-    def home
-
-    end
+    
 
     def index
 
