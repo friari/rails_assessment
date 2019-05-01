@@ -8,11 +8,11 @@ class MentorsController < ApplicationController
     end
 
     def create
-
+        @mentor = current_user.mentor.build(mentor_params)
     end
 
     def new
-
+        @mentor = current_user.mentor.build
     end
 
     def edit
