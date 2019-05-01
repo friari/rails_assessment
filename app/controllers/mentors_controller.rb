@@ -1,6 +1,6 @@
 class MentorsController < ApplicationController
     before_action :authenticate_user!
-    
+
     def home
 
     end
@@ -10,11 +10,12 @@ class MentorsController < ApplicationController
     end
 
     def create
-        @mentor = current_user.mentor.build(mentor_params)
+        @mentor = current_user.build_mentor(mentor_params)
     end
 
     def new
-        @mentor = current_user.mentor.build
+        @mentor = current_user.build_mentor
+        @skills = Skill.all
     end
 
     def edit
