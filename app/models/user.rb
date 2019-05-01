@@ -6,5 +6,4 @@ class User < ApplicationRecord
   has_one :mentor
   has_many :reviews
   has_many :bookings
-  has_one :address
 end

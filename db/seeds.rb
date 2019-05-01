@@ -8,7 +8,9 @@
 
 skills = ["Singing", "Acting", "Improv", "Clowning", "Balloonist", "Acrobatics", "Magic", "Belly Dancing", "Ballet", "Comedy", "Drag", "Flair Bartending", "Hypnosis", "Guitar", "Drums", "Storytelling", "Ventriloquism", "Charicatures", "Adult Entertainment", "Juggling", "Mime"]
 
-skills.sort.each do |skill|
-    Skill.create(skills: skill)
-    puts "created #{skill}"
+if Skill.count == 0
+    skills.sort.each do |skill|
+        Skill.create(skills: skill)
+        puts "created #{skill}"
+    end
 end
