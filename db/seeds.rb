@@ -24,9 +24,11 @@ end
          contact_number: Faker::PhoneNumber.cell_phone,
          country: Faker::Address.country,
          state: Faker::Address.state,
+         city: Faker::Address.city,
          postcode: Faker::Address.postcode,
          suburb: Faker::Address.city,
          password: "test123",
+         password_confirmation: "test123"
      )
 
      
