@@ -8,11 +8,9 @@
 
 skills = ["Singing", "Acting", "Improv", "Clowning", "Balloonist", "Acrobatics", "Magic", "Belly Dancing", "Ballet", "Comedy", "Drag", "Flair Bartending", "Hypnosis", "Guitar", "Drums", "Storytelling", "Ventriloquism", "Charicatures", "Adult Entertainment", "Juggling", "Mime"]
 
-if Skill.count == 0
-    skills.sort.each do |skill|
-        Skill.create(skills: skill)
-        puts "created #{skill}"
-    end
+skills.sort.each do |skill|
+    Skill.create(skills: skill)
+    puts "created #{skill}"
 end
 
 # 20.times do |i|
@@ -28,12 +26,11 @@ end
 #         state: Faker::Address.state,
 #         postcode: Faker::Address.postcode,
 #         suburb: Faker::Address.city,
-#         password: user.password = "test123",
-#         password_confirmation: user.password = "test123",
+#         password: "test123",
 #     )
      
 
 
 #     puts "created #{i}"
 
-# end
+end
