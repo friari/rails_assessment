@@ -14,12 +14,12 @@ class MentorsController < ApplicationController
 
     def create
         #request creates new mentor listing
-        @mentor = current_user.build_mentor(mentor_params)
+        @mentor = current_user.create_mentor(mentor_params)
     end
 
     def new
         #shows form to create new mentor listing
-        @mentor = current_user.build_mentor
+        @mentor = current_user.create_mentor
         @skills = Skill.all
     end
 
