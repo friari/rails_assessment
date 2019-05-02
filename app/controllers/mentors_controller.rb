@@ -1,5 +1,5 @@
 class MentorsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:home, :index]
     before_action :set_listing, only: [:show, :edit, :update, :destroy, :review, :reviews, :book, :createreview]
 
     def home
@@ -9,7 +9,8 @@ class MentorsController < ApplicationController
     def index
         #shows all mentor listings or shows with search params
         @mentors = Mentor.all
-        @mentor_filter = Mentor.where(params)
+    
+        
     end
 
     def create
@@ -35,6 +36,7 @@ class MentorsController < ApplicationController
 
     def show
         #shows listing
+        # render plain: params.inspect
     end
 
     def update
@@ -55,10 +57,14 @@ class MentorsController < ApplicationController
 
     def reviews
         #shows reviews for specific mentor listing
-    end
+    end 
 
     def createreview
         #request that creates review for specific mentor listing
+    end
+
+    def profile
+        #shows the current users profile
     end
 
     private
