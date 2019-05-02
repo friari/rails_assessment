@@ -1,6 +1,6 @@
 <h1>Edit Mentor Test</h1>
 
-<%= form_with model: Mentor.new do %>
+<%= form_with(model: @mentor, local: true) do |form| %>
     <div class="field">
         <%= form.label :rate %>
         <%= form.number_field :rate %>
