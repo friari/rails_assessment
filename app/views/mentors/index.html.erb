@@ -1,7 +1,7 @@
 <h1>Mentors</h1>
 
 <%@mentors.each do |mentor| %>
-    <p><%= "#{User.find(mentor.user_id).first_name}" " #{User.find(mentor.user_id).last_name}"  %></p>
+    <p><%= mentor.user.full_name  %></p>
     <%= link_to 'more' , mentor_path(mentor.id) %>
 
 

@@ -6,4 +6,9 @@ class User < ApplicationRecord
   has_one :mentor, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :bookings
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+      
+  end
 end

@@ -36,7 +36,7 @@ class MentorsController < ApplicationController
 
     def show
         #shows listing
-        # render plain: params.inspect
+        
     end
 
     def update
