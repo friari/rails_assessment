@@ -1,6 +1,7 @@
 class MentorsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_listing, only: [:show, :edit, :update, :destroy, :review, :reviews, :book, :createreview]
+    before_action :authorize_user, only: [:edit, :update, :destroy]
 
     def home
         #hero image home page with search bar
@@ -9,17 +10,16 @@ class MentorsController < ApplicationController
     def index
         #shows all mentor listings or shows with search params
         @mentors = Mentor.all
-        @mentor_filter = Mentor.where(params)
     end
 
     def create
         #request creates new mentor listing
-        @user = current_user.create_mentor(mentor_params)
-        if @user.errors.any?
+        @mentor = current_user.create_mentor(mentor_params)
+        if @mentor.errors.any?
             redirect_to(new_mentor_path)
         else
-            @user.skill_ids = params[:mentor][:skill_ids]
-            redirect_to(mentor_path(@user))
+            @mentor.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(@mentor))
         end
     end
 
@@ -39,6 +39,14 @@ class MentorsController < ApplicationController
 
     def update
         #request that updates listing
+        @mentor = Mentor.find(current_user.mentor.id).update(mentor_params)            
+
+        if @mentor
+            current_user.mentor.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(current_user.mentor.id))
+        else
+            redirect_to(edit_mentor_path(current_user.mentor.id))
+        end
     end
 
     def destroy
@@ -70,5 +78,11 @@ class MentorsController < ApplicationController
 
     def mentor_params
         params.require(:mentor).permit(:rate, :skill_ids, :about_me)
+    end
+
+    def authorize_user
+        if @mentor.user_id != current_user.id
+            redirect_to listings_path
+        end
     end
 end
