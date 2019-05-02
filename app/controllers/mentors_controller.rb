@@ -87,7 +87,7 @@ class MentorsController < ApplicationController
 
     def authorize_user
         if @mentor.user_id != current_user.id
-            redirect_to listings_path
+            redirect_to mentor_path
         end
     end
 end
