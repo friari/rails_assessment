@@ -3,6 +3,13 @@
 
 <p><%= @mentor.about_me %></p>
 
+<% @mentor.skills.each do |skill| %>
+
+    <p><strong><%= skill.skills %></strong></p>
+
+     
+    <% end %> 
+
 <p>$<%= @mentor.rate%>/hr</p>
 
 <%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>

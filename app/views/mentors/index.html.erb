@@ -2,6 +2,11 @@
 
 <%@mentors.each do |mentor| %>
     <p><%= mentor.user.full_name  %></p>
+    <% mentor.skills.each do |skill| %>
+    <ul>
+        <li><%= skill.skills %></li>
+    </ul>
+    <% end %>
     <%= link_to 'more' , mentor_path(mentor.id) %>
 
 

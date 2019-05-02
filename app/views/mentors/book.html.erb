@@ -1,2 +1,6 @@
 <h1>Booking Confirmation</h1>
 <h2><%= @mentor.user.full_name %></h2>
+
+<p>You are about to book <strong><%= @mentor.user.full_name %></strong>, to book, please pay the hourly rate of $<%= @mentor.rate %></p>
+
+<button>$<%= @mentor.rate %></button>
