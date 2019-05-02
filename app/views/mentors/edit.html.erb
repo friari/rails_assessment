@@ -9,7 +9,7 @@
     <div class="field">
         <%= hidden_field_tag "mentor[skill_ids][]", nil %>
         <% Skill.all.each do |skill| %>
-            <%= check_box_tag "mentor[skill_ids][]", skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skills) %>
+            <%= check_box_tag "mentor[skill_ids][]", skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill) %>
             <%= label_tag dom_id(skill), skill.skills %><br/>
         <% end %>
     </div>
