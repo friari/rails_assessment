@@ -9,7 +9,8 @@ class MentorsController < ApplicationController
     def index
         #shows all mentor listings or shows with search params
         @mentors = Mentor.all
-        @mentor_filter = Mentor.where(params)
+    
+        
     end
 
     def create
@@ -49,7 +50,7 @@ class MentorsController < ApplicationController
 
     def reviews
         #shows reviews for specific mentor listing
-    end
+    end 
 
     def createreview
         #request that creates review for specific mentor listing
@@ -59,6 +60,6 @@ class MentorsController < ApplicationController
 
     def set_listing
         id = params[:id]
-        @mentor = Mentor.find(:id)
+        @mentor = Mentor.find(id)
     end
 end
