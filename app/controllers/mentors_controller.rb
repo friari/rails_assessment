@@ -15,12 +15,12 @@ class MentorsController < ApplicationController
 
     def create
         #request creates new mentor listing
-        @user = current_user.create_mentor(mentor_params)
-        if @user.errors.any?
+        @mentor = current_user.create_mentor(mentor_params)
+        if @mentor.errors.any?
             redirect_to(new_mentor_path)
         else
-            @user.skill_ids = params[:mentor][:skill_ids]
-            redirect_to(mentor_path(@user))
+            @mentor.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(@mentor))
         end
     end
 

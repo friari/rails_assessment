@@ -1,15 +1,15 @@
 <h1><%= @mentor.user.full_name  %></h1>
 
-
+<h2>About Me</h2>
 <p><%= @mentor.about_me %></p>
-
+<h2>Skills</h2>
 <% @mentor.skills.each do |skill| %>
 
-    <p><strong><%= skill.skills %></strong></p>
+    <p><%= skill.skills %></p>
 
      
     <% end %> 
 
-<p>$<%= @mentor.rate%>/hr</p>
+<p><strong>$<%= @mentor.rate%>/hr</strong></p>
 
 <%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>
