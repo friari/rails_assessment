@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get "/mentors/:id/review", to: "mentors#review"
   get "/mentors/:id/reviews", to: "mentors#reviews"
   post "/mentors/:id/reviews", to: "mentors#createreview"
-  get "/users/:id/profile", to: "mentors#profile", as: "profile"
+  get "/profile/:id", to: "profile#home", as: "profile"
 end
