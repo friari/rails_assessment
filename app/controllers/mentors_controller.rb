@@ -14,12 +14,18 @@ class MentorsController < ApplicationController
 
     def create
         #request creates new mentor listing
-        @mentor = current_user.create_mentor(mentor_params)
+        @user = current_user.create_mentor(mentor_params)
+        if @user.errors.any?
+            redirect_to(new_mentor_path)
+        else
+            @user.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(@user))
+        end
     end
 
     def new
         #shows form to create new mentor listing
-        @mentor = current_user.create_mentor
+        @mentor = Mentor.new
         @skills = Skill.all
     end
 
@@ -59,6 +65,10 @@ class MentorsController < ApplicationController
 
     def set_listing
         id = params[:id]
-        @mentor = Mentor.find(:id)
+        @mentor = Mentor.find(id)
+    end
+
+    def mentor_params
+        params.require(:mentor).permit(:rate, :skill_ids, :about_me)
     end
 end

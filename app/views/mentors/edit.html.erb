@@ -1,1 +1,25 @@
 <h1>Edit Mentor Test</h1>
+
+<%= form_with model: Mentor.new do %>
+    <div class="field">
+        <%= form.label :rate %>
+        <%= form.number_field :rate %>
+    </div>
+
+    <div class="field">
+        <%= hidden_field_tag "mentor[skill_ids][]", nil %>
+        <% Skill.all.each do |skill| %>
+            <%= check_box_tag "mentor[skill_ids][]", skill.id, @mentor.skill_ids.include?(skill_id) %>
+            <%= label_tag dom_id(skill), skill.skills %><br/>
+        <% end %>
+    </div>
+
+    <div class="field">
+        <%= form.label :about_me %>
+        <%= form.text_field :about_me %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Edit Mentor" %>
+    </div>
+<% end %>
