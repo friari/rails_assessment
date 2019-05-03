@@ -3,11 +3,11 @@
 one:
   user: one
   body: MyText
-  rating: 1
+  rating: 1.5
   mentor: one
 
 two:
   user: two
   body: MyText
-  rating: 1
+  rating: 1.5
   mentor: two
