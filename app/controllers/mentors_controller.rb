@@ -35,7 +35,7 @@ class MentorsController < ApplicationController
 
     def show
         #shows listing
-        stripe_session = Stripe::Checkout::Session.create(
+        @stripe_session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
             name: @mentor.user.full_name,
@@ -47,6 +47,7 @@ class MentorsController < ApplicationController
         success_url: 'http://localhost:3000/success',
         cancel_url: 'http://localhost:3000/cancel',
         )
+        
         
     end
 
