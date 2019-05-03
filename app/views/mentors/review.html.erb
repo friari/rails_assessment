@@ -1,24 +1,17 @@
 <h1>Add A Review</h1>
 
-<%= form_with(model: @mentor, local: true) do |form| %>
+<%= form_with(model: @review, local: true) do |form| %>
     <div class="field">
-        <%= form.label :rate %>
-        <%= form.number_field :rate %>
+        <%= form.label :rating %>
+        <%= form.number_field :rating %>
     </div>
 
     <div class="field">
-        <%= hidden_field_tag "mentor[skill_ids][]", nil %>
-        <% @skills.each do |skill| %>
-            <%= check_box_tag "mentor[skill_ids][]", skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill) %>
-            <%= label_tag dom_id(skill), skill.skills %><br/>
-        <% end %>
-    </div>
-
-    <div class="field">
-        <%= form.label :about_me %>
-        <%= form.text_field :about_me %>
+        <%= form.label :body %>
+        <%= form.text_field :body %>
     </div>
 
     <div class="actions">
-        <%= form.submit "Become a Mentor" %>
+        <%= form.submit "Submit Review" %>
     </div>
+<% end %>

@@ -72,14 +72,25 @@ class MentorsController < ApplicationController
 
     def review
         #shows review form
+        @review = Review.new
     end
 
     def reviews
         #shows reviews for specific mentor listing
+        @reviews = Review.where(mentor_id: params[:id])
     end 
 
     def createreview
         #request that creates review for specific mentor listing
+        # render plain: review_params
+        @review = Review.new(review_params)
+        @review.mentor_id = params[:id]
+        @review.user_id = current_user.id
+        if @review.save
+            redirect_to(reviews_path)
+        else
+            redirect_to(mentor_path(review_path))
+        end
     end
 
     def profile
@@ -95,6 +106,10 @@ class MentorsController < ApplicationController
 
     def mentor_params
         params.require(:mentor).permit(:rate, :skill_ids, :about_me)
+    end
+
+    def review_params
+        params.require(:review).permit(:rating, :body)
     end
 
     def authorize_user
