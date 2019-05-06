@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get "/mentors/:id/review", to: "mentors#review", as: "review"
   get "/mentors/:id/reviews", to: "mentors#reviews", as: "reviews"
   post "/mentors/:id/reviews", to: "mentors#createreview"
-  get "/success", to: "payments#success", as: "success"
-  post "/payments/stripe", to: "payments#stripe"
+  get "/:id/my_profile", to: "profiles#index", as: "profile"
+  post "/payments", to: "payments#stripe"
+  get "payments/success", to: "payments#success"
+ 
+  
   
 end

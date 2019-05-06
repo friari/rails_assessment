@@ -67,7 +67,7 @@ class MentorsController < ApplicationController
                 currency: 'aud',
                 quantity: 1,
             }],
-            success_url: 'http://localhost:3000/success',
+            success_url: 'http://localhost:3000/payments/success',
             cancel_url: 'http://localhost:3000/cancel',
             )
             @stripe_session_id = stripe_session.id
@@ -96,9 +96,7 @@ class MentorsController < ApplicationController
         end
     end
 
-    def profile
-        #shows the current users profile
-    end
+    
 
     private
 

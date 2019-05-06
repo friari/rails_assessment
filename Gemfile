@@ -65,3 +65,5 @@ gem 'devise'
 gem "faker", "~> 1.9"
 
 gem "stripe", "~> 4.16"
+
+gem "ultrahook", "~> 0.1.5"
