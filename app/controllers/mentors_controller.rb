@@ -5,11 +5,15 @@ class MentorsController < ApplicationController
 
     def home
         #hero image home page with search bar
+        @search = Mentor.ransack(params[:q])
+        @mentor = Mentor.all
+        @skills = Skill.all
     end
 
     def index
         #shows all mentor listings or shows with search params
-        @mentors = Mentor.all
+        @search = Mentor.search(params[:q])
+        @mentors = @search.result
     end
 
     def create
