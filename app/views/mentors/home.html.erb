@@ -1,12 +1,16 @@
-<h1>Entertrainer</h1>
 
-<%= search_form_for @search do |f| %>
-    <div class="field">
-        <%= f.label :skills_id_eq, "Skills" %>
-        <%= f.collection_select :skills_id_eq, @skills, :id, :skills %>
-    </div>
+<div class="container-fluid">
 
-    <div class="actions">
-    <%= f.submit "Find A Mentor" %>
-  </div>
-<% end %>
+      <h1>Entertrainer</h1>
+        <%= search_form_for @search do |f| %>
+          <div class="field">
+              <%= f.label :skills_id_eq, "Skills" %>
+              <%= f.collection_select :skills_id_eq, @skills, :id, :skills %>
+          </div>
+
+          <div class="actions">
+          <%= f.submit "Find A Mentor" %>
+        </div>
+      <% end %>
+     
+</div>

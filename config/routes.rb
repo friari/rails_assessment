@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/:id/my_profile", to: "profiles#index", as: "profile"
   post "/payments", to: "payments#stripe"
   get "payments/success/:id", to: "payments#success"
+  get "/about_us", to: "pages#aboutus"
  
   
   
