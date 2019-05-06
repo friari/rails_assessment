@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+# Boostrap
+gem 'bootstrap', '~> 4.0.0'
+# Jquery for rails
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
@@ -60,11 +65,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+# Allows easy Authentication
 gem 'devise'
+# Faker gem to create fake data
 gem "faker", "~> 1.9"
-
+# Payment system gem
 gem "stripe", "~> 4.16"
-
+# Proxy webhook (works with stripe)
 gem "ultrahook", "~> 0.1.5"
+# search engine gem
 gem 'ransack'

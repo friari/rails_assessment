@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
 
     def success
         p params
-        id = Mentor.ids
+        id = params[:id]
         @mentor = Mentor.find(id)
       
         

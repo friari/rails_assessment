@@ -1,5 +1,21 @@
 <h1>My Profile</h1>
 
+<h2>Details</h2>
+
+<%= current_user.full_name %>
+
 <h2>Bookings</h2>
 
-<%=  %>
+<h3>Booked</h3>
+    <%= @booking.each do |ind_booking| %>
+
+    <ul>
+        <li><%= ind_booking %></li>
+    </ul>
+
+    <% end %>
+
+<h3>Booked by</h3>
+
+
+

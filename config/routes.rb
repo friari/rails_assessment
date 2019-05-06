@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "/mentors/:id/reviews", to: "mentors#createreview"
   get "/:id/my_profile", to: "profiles#index", as: "profile"
   post "/payments", to: "payments#stripe"
-  get "payments/success", to: "payments#success"
+  get "payments/success/:id", to: "payments#success"
  
   
   

@@ -78,7 +78,7 @@ class MentorsController < ApplicationController
                 }
 
             },
-            success_url: 'http://localhost:3000/payments/success',
+            success_url: "http://localhost:3000/payments/success/#{@mentor.id}",
             cancel_url: 'http://localhost:3000/cancel',
             )
             @stripe_session_id = stripe_session.id
