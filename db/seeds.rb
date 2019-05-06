@@ -15,10 +15,11 @@ if Skill.count == 0
     end
 end
 
+users = []
 40.times do |i|
     
 
-     User.create(
+     user = User.create(
          first_name: Faker::Name.first_name, 
          last_name: Faker::Name.last_name,
          email: Faker::Internet.email,
@@ -33,7 +34,7 @@ end
          password_confirmation: "test123"
      )
 
-     
+     users.push user
 
 
     puts "created #{i}"
@@ -41,9 +42,21 @@ end
 end
 
 if Mentor.count == 0
+    saved_skills = Skill.all
     for i in 1..20
-        Mentor.create(
-
+        random_user = users[rand users.length]
+        mentor = Mentor.create(
+            rate: Faker::Number.number(4),
+            about_me: Faker::GreekPhilosophers.quote,
+            user_id: random_user.id
         )
+        p mentor
+        while mentor.skills.count < 3
+            random_skill = saved_skills[rand saved_skills.length]
+            if mentor.skills.where(id: random_skill.id).length == 0
+                mentor.skills.push random_skill
+                p "created mentor #{mentor.id} with skill #{random_skill.id}"
+            end
+        end
     end
 end
