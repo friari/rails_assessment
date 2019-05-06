@@ -76,7 +76,7 @@ class MentorsController < ApplicationController
             payment_method_types: ['card'],
             line_items: [{
                 name: @mentor.user.full_name,
-                description: 'PA Training',
+                description: "PA Training with #{@mentor.user.full_name}",
                 amount: @mentor.rate,
                 currency: 'aud',
                 quantity: 1,

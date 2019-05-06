@@ -1,21 +1,15 @@
 <h1>My Profile</h1>
 
-<h2>Details</h2>
+<h3>Details</h3>
+<h5>Name: <%= current_user.full_name %></h5> 
+<h5>Email: <%= current_user.email %></h5> 
+<h5>Contact Number: <%= current_user.contact_number %></h5>
+<h5>Country: <%= current_user.country %></h5>
+<h5>State: <%= current_user.state %></h5>
+<h5>City: <%= current_user.city %></h5>
 
-<%= current_user.full_name %>
 
-<h2>Bookings</h2>
-
-<h3>Booked</h3>
-    <%= @booking.each do |ind_booking| %>
-
-    <ul>
-        <li><%= ind_booking %></li>
-    </ul>
-
-    <% end %>
-
-<h3>Booked by</h3>
+<%= link_to 'update info', edit_user_registration_path %>
 
 
 

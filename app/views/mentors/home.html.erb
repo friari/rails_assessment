@@ -1,5 +1,6 @@
-<h1>Entertrainer</h1>
 
+<div class="container-fluid">
+<h1>Entertrainer</h1>
 <%= search_form_for @search do |f| %>
     <div class="field">
         <%= f.collection_select :skills_id_eq, @skills, :id, :skills, prompt: "Skill" %>
@@ -7,8 +8,9 @@
     <div class="field">
         <%= f.collection_select :user_id_eq, @users, :id, :city, prompt: "City" %>
     </div>
-
     <div class="actions">
-    <%= f.submit "Find A Mentor" %>
-  </div>
+        <%= f.submit "Find A Mentor" %>
+    </div>
 <% end %>
+     
+</div>
