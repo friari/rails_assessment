@@ -1,5 +1,9 @@
 <h1>Mentors</h1>
 
+<%# <%= search_form_for @search, url: search_mentors_path, method: :post do |f| %>
+
+<%# <% end %>
+
 <%@mentors.each do |mentor| %>
     <p><%= mentor.user.full_name  %></p>
     <% mentor.skills.each do |skill| %>
