@@ -1,17 +1,37 @@
 <h1>Mentors</h1>
 
-<%# <%= search_form_for @search, url: search_mentors_path, method: :post do |f| %>
+<div class="advanced-search">
+    <%= search_form_for @search, url: search_mentors_path, html: { method: :post } do |f| %>
+        <h3>Skills</h3>
+        <% @skills.each do |skill| %>
+            <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill)) %>
+            <%= label_tag dom_id(skill), skill.skills %><br/>
+        <% end %>
 
-<%# <% end %>
+        <h3><%= f.label :user_id_eq, "Location" %></h3>
+        <%= f.collection_select :user_id_eq, @users, :id, :city, prompt:  "Choose a City" %><br/><br/>
+
+        <%# <%= f.check_box_tag('q[mentor_rate_lt][]', ) :mentor_rate_lt: %>
+        <%# <%= f.label :mentor_rate_lt, "$"%>
+
+        <div class="actions">
+            <%= f.submit "Filter Search" %>
+        </div>
+    <% end %>
+</div>
+
+
 
 <%@mentors.each do |mentor| %>
-    <p><%= mentor.user.full_name  %></p>
-    <% mentor.skills.each do |skill| %>
-    <ul>
-        <li><%= skill.skills %></li>
-    </ul>
-    <% end %>
-    <%= link_to 'more' , mentor_path(mentor.id) %>
+    <div>
+        <p><%= mentor.user.full_name  %></p>
+        <% mentor.skills.each do |skill| %>
+        <ul>
+            <li><%= skill.skills %></li>
+        </ul>
+        <% end %>
+        <%= link_to 'more' , mentor_path(mentor.id) %>
+    </div>
 
 
 

@@ -75,3 +75,4 @@ gem "stripe", "~> 4.16"
 gem "ultrahook", "~> 0.1.5"
 # search engine gem
 gem 'ransack'
+gem 'kaminari'

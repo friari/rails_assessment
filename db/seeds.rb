@@ -43,7 +43,7 @@ end
 
 if Mentor.count == 0
     saved_skills = Skill.all
-    for i in 1..20
+    for i in 1..4
         random_user = users[rand users.length]
         mentor = Mentor.create(
             rate: Faker::Number.number(4),
