@@ -1,26 +1,29 @@
 class MentorsController < ApplicationController
     before_action :authenticate_user!, except: [:home, :index]
     before_action :set_listing, only: [:show, :edit, :update, :destroy, :review, :reviews, :book, :createreview]
+    before_action :authorize_user, only: [:edit, :update, :destroy]
 
     def home
         #hero image home page with search bar
+        @search = Mentor.ransack(params[:q])
+        @mentor = Mentor.all
+        @skills = Skill.all
     end
 
     def index
         #shows all mentor listings or shows with search params
-        @mentors = Mentor.all
-    
-        
+        @search = Mentor.search(params[:q])
+        @mentors = @search.result
     end
 
     def create
         #request creates new mentor listing
-        @user = current_user.create_mentor(mentor_params)
-        if @user.errors.any?
+        @mentor = current_user.create_mentor(mentor_params)
+        if @mentor.errors.any?
             redirect_to(new_mentor_path)
         else
-            @user.skill_ids = params[:mentor][:skill_ids]
-            redirect_to(mentor_path(@user))
+            @mentor.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(@mentor))
         end
     end
 
@@ -36,11 +39,21 @@ class MentorsController < ApplicationController
 
     def show
         #shows listing
-        # render plain: params.inspect
+       
+        
+        
     end
 
     def update
         #request that updates listing
+        @mentor = Mentor.find(current_user.mentor.id).update(mentor_params)            
+
+        if @mentor
+            current_user.mentor.skill_ids = params[:mentor][:skill_ids]
+            redirect_to(mentor_path(current_user.mentor.id))
+        else
+            redirect_to(edit_mentor_path(current_user.mentor.id))
+        end
     end
 
     def destroy
@@ -49,18 +62,42 @@ class MentorsController < ApplicationController
 
     def book
         #shows pre-stripe booking message
+        stripe_session = Stripe::Checkout::Session.create(
+            payment_method_types: ['card'],
+            line_items: [{
+                name: @mentor.user.full_name,
+                description: 'PA Training',
+                amount: @mentor.rate,
+                currency: 'aud',
+                quantity: 1,
+            }],
+            success_url: 'http://localhost:3000/success',
+            cancel_url: 'http://localhost:3000/cancel',
+            )
+            @stripe_session_id = stripe_session.id
     end
 
     def review
         #shows review form
+        @review = Review.new
     end
 
     def reviews
         #shows reviews for specific mentor listing
+        @reviews = Review.where(mentor_id: params[:id])
     end 
 
     def createreview
         #request that creates review for specific mentor listing
+        # render plain: review_params
+        @review = Review.new(review_params)
+        @review.mentor_id = params[:id]
+        @review.user_id = current_user.id
+        if @review.save
+            redirect_to(reviews_path)
+        else
+            redirect_to(mentor_path(review_path))
+        end
     end
 
     def profile
@@ -76,5 +113,15 @@ class MentorsController < ApplicationController
 
     def mentor_params
         params.require(:mentor).permit(:rate, :skill_ids, :about_me)
+    end
+
+    def review_params
+        params.require(:review).permit(:rating, :body)
+    end
+
+    def authorize_user
+        if @mentor.user_id != current_user.id
+            redirect_to mentor_path
+        end
     end
 end

@@ -1,6 +1,15 @@
-<h1><%= "#{User.find(@mentor.user_id).first_name}"" #{User.find(@mentor.user_id).last_name}" %></h1>
+<h1><%= @mentor.user.full_name  %></h1>
 
-
+<h2>About Me</h2>
 <p><%= @mentor.about_me %></p>
+<h2>Skills</h2>
+<% @mentor.skills.each do |skill| %>
 
-<p>$<%= @mentor.rate%>/hr</p>
+    <p><%= skill.skills %></p>
+
+     
+    <% end %> 
+
+<p><strong>$<%= @mentor.conversion %>/hr</strong></p>
+
+<%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>

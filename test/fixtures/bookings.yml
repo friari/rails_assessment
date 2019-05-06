@@ -3,9 +3,9 @@
 one:
   user: one
   mentor: one
-  stripe_transaction: 
+  stripe_transaction: MyString
 
 two:
   user: two
   mentor: two
-  stripe_transaction: 
+  stripe_transaction: MyString
