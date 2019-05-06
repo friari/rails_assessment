@@ -258,11 +258,8 @@ DEPENDENCIES
   devise
   faker (~> 1.9)
   jbuilder (~> 2.5)
-<<<<<<< HEAD
   jquery-rails
-=======
   kaminari
->>>>>>> ari
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
