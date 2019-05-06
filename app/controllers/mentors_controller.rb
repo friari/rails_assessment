@@ -8,12 +8,22 @@ class MentorsController < ApplicationController
         @search = Mentor.ransack(params[:q])
         @mentor = Mentor.all
         @skills = Skill.all
+        @users = User.all
     end
 
     def index
         #shows all mentor listings or shows with search params
-        @search = Mentor.search(params[:q])
-        @mentors = @search.result
+        p "You are in index #{params}"
+        @search = Mentor.ransack(params[:q])
+        @mentors = @search.result(distinct: true).includes(:user, :skills)
+        @mentor = Mentor.new
+        @skills = Skill.all
+        @users = User.all
+    end
+
+    def search
+        index
+        render :index
     end
 
     def create
