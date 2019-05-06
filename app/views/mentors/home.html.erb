@@ -1,7 +1,6 @@
 
-<<<<<<< HEAD
 <div class="container-fluid">
-=======
+<h1>Entertrainer</h1>
 <%= search_form_for @search do |f| %>
     <div class="field">
         <%= f.collection_select :skills_id_eq, @skills, :id, :skills, prompt: "Skill" %>
@@ -9,18 +8,9 @@
     <div class="field">
         <%= f.collection_select :user_id_eq, @users, :id, :city, prompt: "City" %>
     </div>
->>>>>>> 71cc3410d6662843629b4476dfeb04788ff8bfdb
-
-      <h1>Entertrainer</h1>
-        <%= search_form_for @search do |f| %>
-          <div class="field">
-              <%= f.label :skills_id_eq, "Skills" %>
-              <%= f.collection_select :skills_id_eq, @skills, :id, :skills %>
-          </div>
-
-          <div class="actions">
-          <%= f.submit "Find A Mentor" %>
-        </div>
-      <% end %>
+    <div class="actions">
+        <%= f.submit "Find A Mentor" %>
+    </div>
+<% end %>
      
 </div>
