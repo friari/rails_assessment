@@ -71,6 +71,13 @@ class MentorsController < ApplicationController
                 currency: 'aud',
                 quantity: 1,
             }],
+            payment_intent_data: {
+                metadata: {
+                    mentor_id: @mentor.id,
+                    user_id: current_user.id,
+                }
+
+            },
             success_url: 'http://localhost:3000/payments/success',
             cancel_url: 'http://localhost:3000/cancel',
             )
