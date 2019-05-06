@@ -5,4 +5,10 @@ class Mentor < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookings
   has_one_attached :picture
+
+  def conversion
+   
+    number = self.rate / 100.0
+     sprintf('%.2f', number) 
+  end
 end
