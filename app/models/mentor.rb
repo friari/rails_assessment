@@ -12,4 +12,9 @@ class Mentor < ApplicationRecord
     number = self.rate / 100.0
      sprintf('%.2f', number) 
   end
+
+  def conversion_to_dollars
+    number = self.rate * 100.0
+    sprintf('%2f', number)
+  end
 end

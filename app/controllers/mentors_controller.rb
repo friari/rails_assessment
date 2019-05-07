@@ -33,15 +33,19 @@ class MentorsController < ApplicationController
             @mentor.skill_ids = params[:mentor][:skill_ids]
             redirect_to(mentor_path(@mentor))
         end
+
+        
     end
 
     def new
+       
         #shows form to create new mentor listing
         @mentor = Mentor.new
     end
 
     def edit
         #shows form to edit listing
+
     end
 
     def show
@@ -52,11 +56,15 @@ class MentorsController < ApplicationController
     end
 
     def update
+        # byebug
+
+        rate_conversion = params[:mentor][:rate].to_i * 100.0
         #request that updates listing
         @mentor = Mentor.find(current_user.mentor.id).update(mentor_params)            
 
         if @mentor
             current_user.mentor.skill_ids = params[:mentor][:skill_ids]
+            current_user.mentor.update(rate:rate_conversion)
             redirect_to(mentor_path(current_user.mentor.id))
         else
             redirect_to(edit_mentor_path(current_user.mentor.id))
