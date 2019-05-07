@@ -35,6 +35,8 @@ class MentorsController < ApplicationController
             @mentor.skill_ids = params[:mentor][:skill_ids]
             redirect_to(mentor_path(@mentor))
         end
+
+        
     end
 
     def new
