@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "/payments", to: "payments#stripe"
   get "payments/success/:id", to: "payments#success"
   get "/about_us", to: "pages#aboutus"
+  get "/mentors/:id/delete", to: "mentors#destroy", as: "delete_mentor"
  
   
   

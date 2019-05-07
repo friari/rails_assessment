@@ -16,7 +16,7 @@ if Skill.count == 0
 end
 
 users = []
-40.times do |i|
+60.times do |i|
     
 
      user = User.create(
@@ -24,7 +24,7 @@ users = []
          last_name: Faker::Name.last_name,
          email: Faker::Internet.email,
          date_of_birth: Faker::Date.birthday(18, 65),
-         contact_number: Faker::PhoneNumber.cell_phone,
+         contact_number: Faker::Number.leading_zero_number(10),
          country: Faker::Address.country,
          state: Faker::Address.state,
          city: Faker::Address.city,
@@ -43,7 +43,7 @@ end
 
 if Mentor.count == 0
     saved_skills = Skill.all
-    for i in 1..4
+    for i in 1..25
         random_user = users[rand users.length]
         mentor = Mentor.create(
             rate: Faker::Number.number(4),
