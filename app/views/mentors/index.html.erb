@@ -2,17 +2,29 @@
 
 <div class="advanced-search">
     <%= search_form_for @search, url: search_mentors_path, html: { method: :post } do |f| %>
-        <h3>Skills</h3>
-        <% @skills.each do |skill| %>
-            <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill)) %>
-            <%= label_tag dom_id(skill), skill.skills %><br/>
-        <% end %>
+        <div class="field">
+            <h3>Skills</h3>
+            <% @skills.each do |skill| %>
+                <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill)) %>
+                <%= label_tag dom_id(skill), skill.skills %><br/>
+            <% end %>
+        </div>
 
-        <h3><%= f.label :user_id_eq, "Location" %></h3>
-        <%= f.collection_select :user_id_eq, @users, :id, :city, prompt:  "Choose a City" %><br/><br/>
+        <div class="field">
+            <h3><%= f.label :user_city_eq, "Location" %></h3>
+            <%= f.select :user_city_eq, @cities, prompt:  "Choose a City" %><br/><br/>
+        </div>
 
-        <%# <%= f.check_box_tag('q[mentor_rate_lt][]', ) :mentor_rate_lt: %>
-        <%# <%= f.label :mentor_rate_lt, "$"%>
+        <div class="field">
+            <%= check_box_tag('q[rate_lteq]', 3000) %>
+            <%= f.label :rate_lteq, "$"%>
+
+            <%= check_box_tag('q[rate_lteq]', 6000) %>
+            <%= f.label :rate_lteq, "$$"%>
+
+            <%= check_box_tag('q[rate_gt]', 6000) %>
+            <%= f.label :rate_gt, "$$$"%>
+        </div>
 
         <div class="actions">
             <%= f.submit "Filter Search" %>
@@ -24,12 +36,13 @@
 
 <%@mentors.each do |mentor| %>
     <div>
-        <p><%= mentor.user.full_name  %></p>
+        <p><h3><%= mentor.user.full_name %></h3></p>
         <% mentor.skills.each do |skill| %>
         <ul>
             <li><%= skill.skills %></li>
         </ul>
         <% end %>
+        <strong>$<%= mentor.conversion %>/hr</strong>
         <%= link_to 'more' , mentor_path(mentor.id) %>
     </div>
 
