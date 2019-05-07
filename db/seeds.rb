@@ -16,16 +16,8 @@ if Skill.count == 0
 end
 
 users = []
-<<<<<<< HEAD
 cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Brisbane", "Hobart", "Gold Coast", "Newcastle", "Cairns", "Wollongong", "Townsville", "Geelong", "Bendigo", "Ballarat", "Alice Springs"]
-=======
-<<<<<<< HEAD
-60.times do |i|
-=======
-cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Brisbane", "Hobart", "Gold Coast", "Newcastle", "Cairns", "Wollongong", "Townsville", "Geelong", "Bendigo", "Ballarat", "Alice Springs", ]
->>>>>>> 2f6c40200c556888bb5f0555315288ca3ed72f65
 40.times do |i|
->>>>>>> 8e7019b10af516d107be2f2f8f3fee3032481485
     
 
      user = User.create(
@@ -58,13 +50,8 @@ uniq_arr = arr.uniq
 
 if Mentor.count == 0
     saved_skills = Skill.all
-<<<<<<< HEAD
-    for i in 1..25
-        random_user = users[rand users.length]
-=======
     for i in 1..20
         random_user = users[uniq_arr[i-1]]
->>>>>>> 8e7019b10af516d107be2f2f8f3fee3032481485
         mentor = Mentor.create(
             rate: Faker::Number.number(4),
             about_me: Faker::GreekPhilosophers.quote,
