@@ -8,6 +8,19 @@
 <h5>State: <%= current_user.state %></h5>
 <h5>City: <%= current_user.city %></h5>
 
+<h2>My Bookings</h2>
+<%# <%= current_user.find(Mentor.find(current_user.bookings.mentor_id).user_id).full_name
+%> 
+
+
+<% @user_booking.each do |booking| %>
+
+
+ <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
+ <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
+ 
+
+<% end %>
 
 <%= link_to 'update info', edit_user_registration_path %>
 
