@@ -40,9 +40,14 @@ class MentorsController < ApplicationController
     end
 
     def new
+       
         #shows form to create new mentor listing
         @mentor = Mentor.new
         @skills = Skill.all
+        # byebug
+
+        # rate_conversion = params[:mentor][:rate].to_i * 100.0
+        # current_user.mentor.create(rate:rate_conversion)
     end
 
     def edit
