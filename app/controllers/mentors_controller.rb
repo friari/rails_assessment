@@ -1,14 +1,14 @@
 class MentorsController < ApplicationController
-    before_action :authenticate_user!, except: [:home, :index]
-    before_action :set_listing, only: [:show, :edit, :update, :destroy, :review, :reviews, :book, :createreview]
+    before_action :authenticate_user!, except: [:home, :index, :search]
+    before_action :set_mentor, only: [:show, :edit, :update, :destroy, :review, :reviews, :book, :createreview]
+    before_action :set_skills, only: [:new, :edit, :index, :home, :search]
+    before_action :set_cities, only: [:home, :index, :search]
     before_action :authorize_user, only: [:edit, :update, :destroy]
 
     def home
         #hero image home page with search bar
         @search = Mentor.ransack(params[:q])
         @mentor = Mentor.all
-        @skills = Skill.all
-        @cities = User.all.pluck(:city).uniq
     end
 
     def index
@@ -16,9 +16,7 @@ class MentorsController < ApplicationController
         @search = Mentor.ransack(params[:q])
         @mentors = @search.result(distinct: true).includes(:user, :skills)
         @mentor = Mentor.new
-        @skills = Skill.all
         @users = User.all
-        @cities = User.all.pluck(:city).uniq
     end
 
     def search
@@ -40,7 +38,6 @@ class MentorsController < ApplicationController
     def new
         #shows form to create new mentor listing
         @mentor = Mentor.new
-        @skills = Skill.all
     end
 
     def edit
@@ -121,13 +118,21 @@ class MentorsController < ApplicationController
 
     private
 
-    def set_listing
+    def set_mentor
         id = params[:id]
         @mentor = Mentor.find(id)
     end
 
+    def set_skills
+        @skills = Skill.all
+    end
+
+    def set_cities
+        @cities = User.all.pluck(:city).uniq
+    end
+
     def mentor_params
-        params.require(:mentor).permit(:rate, :skill_ids, :about_me)
+        params.require(:mentor).permit(:rate, :skill_ids, :about_me, :picture)
     end
 
     def review_params
