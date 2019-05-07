@@ -1,28 +1,41 @@
 <h1>My Profile</h1>
 
-<h3>Details</h3>
+<h3>User Details</h3>
 <h5>Name: <%= current_user.full_name %></h5> 
 <h5>Email: <%= current_user.email %></h5> 
-<h5>Contact Number: <%= current_user.contact_number %></h5>
+<h5>Contact Number: <%= current_user.contact_number.to_s.rjust(10, "0") %></h5>
 <h5>Country: <%= current_user.country %></h5>
 <h5>State: <%= current_user.state %></h5>
-<h5>City: <%= current_user.city %></h5>
+<h5>City: <%= current_user.city %></h5> 
 
-<h2>My Bookings</h2>
+
+
+<%= link_to 'update user info', edit_user_registration_path %>
+
+<h3>Mentor Details</h3>
+<% if !(@mentor_details) %>
+    <p>You are not a mentor</p>
+    <%= link_to 'become a mentor', new_mentor_path%> 
+<% else %>
+<p>Rate: $<%= @mentor_details.conversion %>/hr</p>
+<p>About Me: <%= @mentor_details.about_me %></p>
+<%= link_to 'update mentor info', edit_mentor_path(@mentor_details) %>
+<%= link_to 'Destroy', @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+
+
+
+<h3>My Bookings</h3>
 <%# <%= current_user.find(Mentor.find(current_user.bookings.mentor_id).user_id).full_name
 %> 
 
 
 <% @user_booking.each do |booking| %>
 
-
- <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
- <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
- 
-
+    <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
+    <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
 <% end %>
-
-<%= link_to 'update info', edit_user_registration_path %>
 
 
 

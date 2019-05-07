@@ -65,6 +65,8 @@ class MentorsController < ApplicationController
 
     def destroy
         #request that deletes listing
+        mentor = Mentor.find_by_user_id(current_user.id).destroy
+        redirect_to profile_path(current_user.id)
     end
 
     def book
