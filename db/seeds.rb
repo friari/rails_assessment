@@ -24,7 +24,7 @@ cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Bri
          first_name: Faker::Name.first_name, 
          last_name: Faker::Name.last_name,
          email: Faker::Internet.email,
-         date_of_birth: Faker::Date.birthday(18, 65),
+         date: Faker::Date.birthday(18, 65),
          contact_number: Faker::Number.leading_zero_number(10),
          country: Faker::Address.country,
          state: Faker::Address.state,
