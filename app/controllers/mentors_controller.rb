@@ -8,17 +8,17 @@ class MentorsController < ApplicationController
         @search = Mentor.ransack(params[:q])
         @mentor = Mentor.all
         @skills = Skill.all
-        @users = User.all
+        @cities = User.all.pluck(:city).uniq
     end
 
     def index
         #shows all mentor listings or shows with search params
-        p "You are in index #{params}"
         @search = Mentor.ransack(params[:q])
         @mentors = @search.result(distinct: true).includes(:user, :skills)
         @mentor = Mentor.new
         @skills = Skill.all
         @users = User.all
+        @cities = User.all.pluck(:city).uniq
     end
 
     def search

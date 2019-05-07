@@ -5,6 +5,7 @@ class Mentor < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookings
   has_one_attached :picture
+  validates :user_id, uniqueness: true
 
   def conversion
    

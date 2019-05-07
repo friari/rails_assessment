@@ -16,6 +16,7 @@ if Skill.count == 0
 end
 
 users = []
+cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Brisbane", "Hobart", "Gold Coast", "Newcastle", "Cairns", "Wollongong", "Townsville", "Geelong", "Bendigo", "Ballarat", "Alice Springs", ]
 40.times do |i|
     
 
@@ -27,7 +28,7 @@ users = []
          contact_number: Faker::PhoneNumber.cell_phone,
          country: Faker::Address.country,
          state: Faker::Address.state,
-         city: Faker::Address.city,
+         city: cities[rand cities.length],
          postcode: Faker::Address.postcode,
          suburb: Faker::Address.city,
          password: "test123",
@@ -41,10 +42,16 @@ users = []
 
 end
 
+arr= []
+while arr.uniq.length <= 25
+    arr.push rand(1...40)
+end
+uniq_arr = arr.uniq
+
 if Mentor.count == 0
     saved_skills = Skill.all
-    for i in 1..4
-        random_user = users[rand users.length]
+    for i in 1..20
+        random_user = users[uniq_arr[i-1]]
         mentor = Mentor.create(
             rate: Faker::Number.number(4),
             about_me: Faker::GreekPhilosophers.quote,
