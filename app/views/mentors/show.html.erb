@@ -1,11 +1,13 @@
 <h1><%= @mentor.user.full_name  %></h1>
 
+<%= image_tag @mentor.picture if @mentor.picture.attached? %>
 <h2>About Me</h2>
 <p><%= @mentor.about_me %></p>
 <h2>Skills</h2>
 <% @mentor.skills.each do |skill| %>
-
-    <p><%= skill.skills %></p>
+    <div class="skill">
+        <p><%= skill.skills %></p>
+    </div>
 
      
     <% end %> 

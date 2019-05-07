@@ -78,3 +78,7 @@ gem "ultrahook", "~> 0.1.5"
 # search engine gem
 gem 'ransack'
 gem 'kaminari'
+<<<<<<< HEAD
+gem "aws-sdk-s3", "~> 1.36"
+=======
+>>>>>>> 2f6c40200c556888bb5f0555315288ca3ed72f65

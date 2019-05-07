@@ -16,7 +16,7 @@ if Skill.count == 0
 end
 
 users = []
-cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Brisbane", "Hobart", "Gold Coast", "Newcastle", "Cairns", "Wollongong", "Townsville", "Geelong", "Bendigo", "Ballarat", "Alice Springs" ]
+cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Brisbane", "Hobart", "Gold Coast", "Newcastle", "Cairns", "Wollongong", "Townsville", "Geelong", "Bendigo", "Ballarat", "Alice Springs"]
 40.times do |i|
     
 
