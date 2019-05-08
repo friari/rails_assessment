@@ -118,7 +118,7 @@ class MentorsController < ApplicationController
         @review.mentor_id = params[:id]
         @review.user_id = current_user.id
         if @review.save
-            redirect_to(reviews_path)
+            redirect_to(mentor_path)
         else
             redirect_to(mentor_path(review_path))
         end

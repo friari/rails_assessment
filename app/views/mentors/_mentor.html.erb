@@ -1,0 +1,8 @@
+<div class="col-md-4">
+    <% if @mentor.picture.attached? %>
+        <%= image_tag @mentor.picture, class: "img-fluid", width: "100%", height: "auto" %>
+    <% end %>
+    <p><%= @mentor.user.city %></p>
+    <p><strong>$<%= @mentor.conversion %>/hr</strong></p>
+    <%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>
+</div>

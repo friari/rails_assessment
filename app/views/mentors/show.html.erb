@@ -1,17 +1,18 @@
-<h1><%= @mentor.user.full_name  %></h1>
+<div class="container-fluid">
+    <div class="row">
+        <%= render 'mentor' %>
+        <div class="col-md-8">
+            <h1><%= @mentor.user.full_name  %></h1>
+            <h2>About Me</h2>
+                <p><%= @mentor.about_me %></p>
+            <h2>Skills</h2>|
+                <% @mentor.skills.each do |skill| %>
+                        <%= skill.skills %> | 
 
-<%= image_tag @mentor.picture if @mentor.picture.attached? %>
-<h2>About Me</h2>
-<p><%= @mentor.about_me %></p>
-<h2>Skills</h2>
-<% @mentor.skills.each do |skill| %>
-    <div class="skill">
-        <p><%= skill.skills %></p>
+                    
+                <% end %>
+            <h2>Reviews</h2>
+            <%= render 'reviews' %>
+        </div>
     </div>
-
-     
-    <% end %> 
-
-<p><strong>$<%= @mentor.conversion %>/hr</strong></p>
-
-<%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>
+</div>
