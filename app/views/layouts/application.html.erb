@@ -11,6 +11,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <%= link_to "home", root_path, class:"navbar-brand" %>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -40,6 +41,18 @@
           </li>
         </ul>
       </div>
+=======
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <nav>
+      <ul>
+        <li><%= link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
+        <%= link_to "login", user_session_path, method: "GET" unless user_signed_in? %></li>
+        <li><%= link_to "My Profile", profile_path(current_user), method: "GET" if user_signed_in? %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path, method: "GET" unless user_signed_in? %></li>
+
+      </ul>
+>>>>>>> c702daac6738acd09373bd541d17ac10415e70cd
     </nav>
     <p class="alert"><%= alert %></p>
     <%= yield %>

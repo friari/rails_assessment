@@ -19,6 +19,7 @@
 <% else %>
 <p>Rate: $<%= @mentor_details.conversion %>/hr</p>
 <p>About Me: <%= @mentor_details.about_me %></p>
+<p>Mentor Pic <%=  image_tag @mentor_details.picture  %></p>
 <%= link_to 'update mentor info', edit_mentor_path(@mentor_details) %>
 <%= link_to 'Destroy', @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
@@ -27,15 +28,33 @@
 
 
 <h3>My Bookings</h3>
-<%# <%= current_user.find(Mentor.find(current_user.bookings.mentor_id).user_id).full_name
-%> 
+    
+    <% if @user_booking.length == 0 %>  
+        <p>You currently have no bookings</p>
+    <% else %>
+        <% @user_booking.each do |booking| %>
+            <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
+            <p>Booked: <%= User.find(Mentor.find(booking.mentor_id).user_id).created_at %></p>
+            <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr | Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> | Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number.to_s.rjust(10, "0") %></p> 
+            <% end %>
+    <% end %>
+       
+       
+        
+   
+
+<h3>My Clients</h3>
+    <% if @mentor_clients.length == 0 %>
+        <p>You currently have no clients</p>
+    <% else %>
+        <% @mentor_clients.each do |client| %>
+            <h5><%= User.find(client.user_id).full_name %></h5>
+            <p>Booked: <%= User.find(client.user_id).created_at %></p>
+            <p>Email: <%= User.find(client.user_id).email %> | Contact Number: <%= User.find(client.user_id).contact_number.to_s.rjust(10, "0") %></p>
+        <% end %>
+    <% end %>
 
 
-<% @user_booking.each do |booking| %>
-
-    <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
-    <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
-<% end %>
 
 
 
