@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <script src="https://js.stripe.com/v3/"></script>
+    <%= javascript_include_tag "application" %>
   </head>
 
   <body>
-<<<<<<< HEAD
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <%= link_to "home", root_path, class:"navbar-brand" %>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -24,16 +24,16 @@
               <%= link_to "Log Out", destroy_user_session_path, class:"nav-link", method: "DELETE" %>
             </li>
             <li class="nav-item">
-              <%= link_to "My Profile", profile_path(current_user), class:"nav-link", method: "GET" %>
+              <%= link_to "My Profile", profile_path(current_user), class:"nav-link" %>
             </li>
             <% if Mentor.find_by(user_id: current_user.id) == nil %>
               <li class="nav-item">
-                <%= link_to "Become a Trainer", new_mentor_path, class:"nav-link", method: "GET" %>
+                <%= link_to "Become a Trainer", new_mentor_path, class:"nav-link" %>
               </li>
             <% end %>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Log In/Sign Up", user_session_path, class:"nav-link", method: "GET" %>
+              <%= link_to "Log In/Sign Up", user_session_path, class:"nav-link" %>
             </li>
           <% end %>
           <li class="nav-item">
@@ -41,18 +41,6 @@
           </li>
         </ul>
       </div>
-=======
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <nav>
-      <ul>
-        <li><%= link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
-        <%= link_to "login", user_session_path, method: "GET" unless user_signed_in? %></li>
-        <li><%= link_to "My Profile", profile_path(current_user), method: "GET" if user_signed_in? %></li>
-        <li><%= link_to "Sign Up", new_user_registration_path, method: "GET" unless user_signed_in? %></li>
-
-      </ul>
->>>>>>> c702daac6738acd09373bd541d17ac10415e70cd
     </nav>
     <p class="alert"><%= alert %></p>
     <%= yield %>
