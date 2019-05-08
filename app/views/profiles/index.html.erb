@@ -27,15 +27,21 @@
 
 
 <h3>My Bookings</h3>
-<%# <%= current_user.find(Mentor.find(current_user.bookings.mentor_id).user_id).full_name
-%> 
+
+    <% @user_booking.each do |booking| %>
+        <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
+        <p>Booked: <%= User.find(Mentor.find(booking.mentor_id).user_id).created_at %></p>
+        <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr | Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> | Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
+    <% end %>
+
+<h3>My Clients</h3>
+    <% @mentor_clients.each do |client| %>
+        <h5><%= User.find(client.user_id).full_name %></h5>
+         <p>Booked: <%= User.find(client.user_id).created_at %></p>
+        <p>Email: <%= User.find(client.user_id).email %> | Contact Number: <%= User.find(client.user_id).contact_number %></p>
+    <% end %>
 
 
-<% @user_booking.each do |booking| %>
-
-    <h5><%=User.find(Mentor.find(booking.mentor_id).user_id).full_name %></h5>
-    <p>Rate: $<%=Mentor.find(booking.mentor_id).conversion %>/hr Email: <%=User.find(Mentor.find(booking.mentor_id).user_id).email %> Contact Number: <%=User.find(Mentor.find(booking.mentor_id).user_id).contact_number %></p> 
-<% end %>
 
 
 
