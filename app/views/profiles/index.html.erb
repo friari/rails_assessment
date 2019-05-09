@@ -21,7 +21,7 @@
 <p>About Me: <%= @mentor_details.about_me %></p>
 <p>Mentor Pic <%=  image_tag @mentor_details.picture  %></p>
 <%= link_to 'update mentor info', edit_mentor_path(@mentor_details) %>
-<%= link_to 'Destroy', @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%# <%= link_to 'Destroy', @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %> 
 <% end %>
 
 

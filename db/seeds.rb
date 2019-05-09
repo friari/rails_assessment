@@ -53,7 +53,7 @@ if Mentor.count == 0
     for i in 1..20
         random_user = users[uniq_arr[i-1]]
         mentor = Mentor.create(
-            rate: Faker::Number.number(4),
+            rate: Faker::Number.number(4).,
             about_me: Faker::GreekPhilosophers.quote,
             user_id: random_user.id
         )

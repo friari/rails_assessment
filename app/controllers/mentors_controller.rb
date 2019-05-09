@@ -26,12 +26,14 @@ class MentorsController < ApplicationController
 
     def create
         #request creates new mentor listing
+        rate_conversion = params[:mentor][:rate].to_i * 100.0
         @mentor = current_user.create_mentor(mentor_params)
         if @mentor.errors.any?
             redirect_to(new_mentor_path)
         else
             @mentor.skill_ids = params[:mentor][:skill_ids]
-            redirect_to(mentor_path(@mentor))
+            current_user.mentor.update(rate:rate_conversion)
+            redirect_to(profile_path(current_user))
         end
 
         
@@ -65,10 +67,13 @@ class MentorsController < ApplicationController
         if @mentor
             current_user.mentor.skill_ids = params[:mentor][:skill_ids]
             current_user.mentor.update(rate:rate_conversion)
-            redirect_to(mentor_path(current_user.mentor.id))
+            # redirect_to(mentor_path(current_user.mentor.id))
+            redirect_to(profile_path(current_user.id))
         else
             redirect_to(edit_mentor_path(current_user.mentor.id))
+           
         end
+           
     end
 
     def destroy
