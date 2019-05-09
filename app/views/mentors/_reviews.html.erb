@@ -2,25 +2,48 @@
     <div class="row">
         <div class="col-md-6">
             <% @mentor.reviews.each_with_index do |review, index| %>
-                <div class="review">
+                <div>
                     <% if index % 2 == 0 %>
-                        <p><strong><%= review.user.full_name %></strong></p>
-                        <p><%= review.rating %></p>
-                        <p><%= review.body %></p>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title"><%= review.user.full_name %></h6>
+                                <p>
+                                    <% review.rating.to_i.times do  %>
+                                        <span class="fas fa-star"></span>
+                                    <% end %>
+                                    <% review.blank_stars.to_i.times do  %>
+                                        <span class="far fa-star"></span>
+                                    <% end %>
+                                </p>
+                                <p><%= review.body %></p>
+                            </div>
+                        </div>
                     <% end %>
                 </div>
             <% end %>
         </div>
         <div class="col-md-6">
             <% @mentor.reviews.each_with_index do |review, index| %>
-                <div class="review">
+                <div>
                     <% if index % 2 == 1 %>
-                        <p><strong><%= review.user.full_name %></strong></p>
-                        <p><%= review.rating %></p>
-                        <p><%= review.body %></p>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title"><%= review.user.full_name %></h6>
+                                <p>
+                                    <% review.rating.to_i.times do  %>
+                                        <span class="fas fa-star"></span>
+                                    <% end %>
+                                    <% review.blank_stars.to_i.times do  %>
+                                        <span class="far fa-star"></span>
+                                    <% end %>
+                                </p>
+                                <p><%= review.body %></p>
+                            </div>
+                        </div>
                     <% end %>
                 </div>
             <% end %>
         </div>
     </div>
+    <%= link_to '<button type="button">ADD REVIEW</button>'.html_safe, review_path %>
 </div>

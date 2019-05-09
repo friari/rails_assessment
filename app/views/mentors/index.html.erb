@@ -1,37 +1,56 @@
-<h1>Mentors</h1>
 <div class="container-fluid">
-    <div class="advanced-search">
-        <%= search_form_for @search, url: search_mentors_path, html: { method: :post } do |f| %>
-            <div class="field">
-                <h3>Skills</h3>
-                <% @skills.each do |skill| %>
-                    <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill)) %>
-                    <%= label_tag dom_id(skill), skill.skills %><br/>
+    <div class="row">
+        <div class="col-md-3 adv-search">
+            <div class="pl-1 mt-sm-2">
+                <%= search_form_for @search, url: search_mentors_path, html: { method: :post } do |f| %>
+                    <div class="field">
+                        <h3>Skills</h3>
+                        <div class="row pl-2">
+                            <div class="col-6 form-check">
+                                <% @skills.each_with_index do |skill, index| %>
+                                    <% if index % 2 == 0 %>
+                                        <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill), class: "form-check-input") %>
+                                        <%= label_tag dom_id(skill), skill.skills, class: "skill form-check-label" %><br/>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <div class="col-6 form-check">
+                                <% @skills.each_with_index do |skill, index| %>
+                                    <% if index % 2 == 1 %>
+                                        <%= check_box_tag('q[skills_id_in][]', skill.id, @mentor.skill_ids.include?(skill.id), id: dom_id(skill), class: "form-check-input") %>
+                                        <%= label_tag dom_id(skill), skill.skills, class: "skill form-check-label" %><br/>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="field">
+                        <h3><%= f.label :user_city_eq, "Location" %></h3>
+                        <%= f.select :user_city_eq, @cities, prompt:  "Choose a City" %><br/><br/>
+                    </div>
+
+                    <div class="field">
+                        <h3>Price Range</h3>
+                        <%= check_box_tag('q[rate_lteq]', 3000) %>
+                        <%= f.label :rate_lteq, "$"%>
+
+                        <%= check_box_tag('q[rate_lteq]', 6000) %>
+                        <%= f.label :rate_lteq, "$$"%>
+
+                        <%= check_box_tag('q[rate_gt]', 6000) %>
+                        <%= f.label :rate_gt, "$$$"%>
+                    </div>
+                    <br/>
+                    <div class="actions">
+                        <%= f.submit "Filter Search" %>
+                    </div>
+                    <br/>
                 <% end %>
             </div>
+        </div>
 
-            <div class="field">
-                <h3><%= f.label :user_city_eq, "Location" %></h3>
-                <%= f.select :user_city_eq, @cities, prompt:  "Choose a City" %><br/><br/>
-            </div>
-
-            <div class="field">
-                <%= check_box_tag('q[rate_lteq]', 3000) %>
-                <%= f.label :rate_lteq, "$"%>
-
-                <%= check_box_tag('q[rate_lteq]', 6000) %>
-                <%= f.label :rate_lteq, "$$"%>
-
-                <%= check_box_tag('q[rate_gt]', 6000) %>
-                <%= f.label :rate_gt, "$$$"%>
-            </div>
-
-            <div class="actions">
-                <%= f.submit "Filter Search" %>
-            </div>
-        <% end %>
+        
+        <%= render 'mentors' %>
     </div>
-
-
-    <%= render 'mentors' %>
 </div>

@@ -1,16 +1,26 @@
-<%@mentors.each do |mentor| %>
-    <div>
-        <%= image_tag mentor.picture if mentor.picture.attached? %>
-        <p><h3><%= mentor.user.full_name %></h3></p>
-        <% mentor.skills.each do |skill| %>
-        <ul>
-            <li><%= skill.skills %></li>
-        </ul>
-        <% end %>
-        <strong>$<%= mentor.conversion %>/hr</strong>
-        <%= link_to 'more' , mentor_path(mentor.id) %>
+<div class="col-md-9">
+    <div class="container-fluid">
+        <div class="row">
+            <% @mentors.each do |mentor| %>
+                    <div class="col-md-4">
+                        <div class="card mt-2">
+                            <% if mentor.picture.attached? %>
+                                <%= link_to image_tag(mentor.picture, class: "img-fluid card-img-top", width: "100%", height: "auto"), mentor_path(mentor.id), class: "stretched-link" %>
+                            <% else %>
+                                <%= link_to image_tag("default_avatar.png", class: "img-fluid card-img-top", width: "100%", height: "auto"), mentor_path(mentor.id), class: "stretched-link" %>
+                            <% end %>
+                            <div class="card-body h-50 p-10">
+                                <h3 class="card-title mb-0"><%= mentor.user.full_name %></h3>
+                                <small class="card-text">|
+                                    <% mentor.skills.each do |skill| %>
+                                        <%= skill.skills %> |
+                                    <% end %>
+                                </small><br/>
+                                <strong class="card-text">$<%= mentor.conversion %>/hr</strong>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
     </div>
-
-
-
-<% end %>
+</div>
