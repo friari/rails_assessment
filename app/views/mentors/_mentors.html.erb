@@ -1,4 +1,4 @@
-<div class="col-md-9">
+<div class="col-md-9 index">
     <div class="container-fluid">
         <div class="row">
             <% @mentors.each do |mentor| %>
@@ -11,16 +11,26 @@
                             <% end %>
                             <div class="card-body h-50 p-10">
                                 <h3 class="card-title mb-0"><%= mentor.user.full_name %></h3>
+                                <% mentor.reviews.average(:rating).to_i.times do %>
+                                    <span class="fas fa-star"></span>
+                                <% end %>
+                                <% (5 - mentor.reviews.average(:rating).to_i).times do  %>
+                                    <span class="far fa-star"></span>
+                                <% end %>
+                                <br/>
                                 <small class="card-text">|
                                     <% mentor.skills.each do |skill| %>
                                         <%= skill.skills %> |
                                     <% end %>
-                                </small><br/>
+                                </small>
+                                <br/>
                                 <strong class="card-text">$<%= mentor.conversion %>/hr</strong>
                             </div>
                         </div>
                     </div>
             <% end %>
         </div>
+        <%= paginate @mentors %>
+        <%= page_entries_info @mentors %>
     </div>
 </div>
