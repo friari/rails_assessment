@@ -1,4 +1,5 @@
-<% if @mentor == Mentor.find(current_user.mentor.id) %>
+
+<% if current_user.mentor.id  == params[:id].to_i  %>
   <h1>Sorry you can not book yourself!</h1>
   <p>payment will not go ahead</p>
 <% else %>

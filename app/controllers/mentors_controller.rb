@@ -83,7 +83,7 @@ class MentorsController < ApplicationController
     end
 
     def book
-        @mentor = Mentor.find(current_user.mentor.id)
+        
 
         
         #shows pre-stripe booking message
