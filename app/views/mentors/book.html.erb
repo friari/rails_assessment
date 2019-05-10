@@ -2,6 +2,7 @@
 <% if current_user.mentor.id  == params[:id].to_i  %>
   <h1>Sorry you can not book yourself!</h1>
   <p>payment will not go ahead</p>
+  <%= link_to 'back to trainers', mentors_path %>
 <% else %>
 
     <h1>Booking Confirmation</h1>
