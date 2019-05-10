@@ -1,16 +1,16 @@
-
-<div class="container-fluid">
-<h1>Entertrainer</h1>
-<%= search_form_for @search do |f| %>
-    <div class="field">
-        <%= f.collection_select :skills_id_eq, @skills, :id, :skills, prompt: "Skill" %>
-    </div>
-    <div class="field">
-        <%= f.select :user_city_eq, @cities, prompt:  "City" %>
-    </div>
-    <div class="actions">
-        <%= f.submit "Find A Mentor" %>
-    </div>
-<% end %>
-     
+<div class="home-background">
+        <div id="home">
+            <h1 id="title">Entertrainer</h1>
+            <%= search_form_for @search do |f| %>
+                <div class="field">
+                    <%= f.collection_select :skills_id_eq, @skills, :id, :skills, prompt: "Skill" %>
+                </div>
+                <div class="field">
+                    <%= f.select :user_city_eq, @cities, prompt:  "City" %>
+                </div>
+                <div class="actions">
+                    <%= f.submit "Find A Mentor" %>
+                </div>
+            <% end %>
+        </div>
 </div>
