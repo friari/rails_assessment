@@ -49,6 +49,7 @@
                 
         
 
+<<<<<<< HEAD
         <h3>My Clients</h3>
             <% if @mentor_clients.length == 0 %>
                 <p>You currently have no clients</p>
@@ -60,7 +61,21 @@
                 <% end %>
             <% end %>
     </div>
+=======
+<h3>My Clients</h3>
+    <% if @mentor_clients.length == 0 or @mentor_clients[0].user_id == current_user.id  %>
+        <p>You currently have no clients</p>
+    <% else %>
+            <% @mentor_clients.each do |client| %>
+                <h5><%= User.find(client.user_id).full_name %></h5>
+                <p>Booked: <%= User.find(client.user_id).created_at %></p>
+                <p>Email: <%= User.find(client.user_id).email %> | Contact Number: <%= User.find(client.user_id)    .contact_number.to_s.rjust(10, "0") %></p>
+             <% end %>
+    <% end %>
+>>>>>>> 98d71295807d91bc60075c34c962adb3b0fd3e78
 </div>
+
+
 
 
 
