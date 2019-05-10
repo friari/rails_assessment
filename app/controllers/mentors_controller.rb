@@ -100,8 +100,8 @@ class MentorsController < ApplicationController
                 }
 
             },
-            success_url: "http://localhost:3000/payments/success/#{@mentor.id}",
-            cancel_url: 'http://localhost:3000/cancel',
+            success_url: "https://fierce-everglades-61246.herokuapp.com/payments/success/#{@mentor.id}",
+            cancel_url: 'https://fierce-everglades-61246.herokuapp.com/cancel',
             )
             @stripe_session_id = stripe_session.id
     end
