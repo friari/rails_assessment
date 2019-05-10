@@ -6,7 +6,16 @@
             <%= image_tag "default_avatar.png", class: "img-fluid", width: "100%", height: "auto" %>
         <% end %>
     </div>
-    <p><%= @mentor.user.city %></p>
-    <p><strong>$<%= @mentor.conversion %>/hr</strong></p>
+    <%= @mentor.user.city %>
+    <br/>
+    <% @mentor.reviews.average(:rating).to_i.times do %>
+        <span class="fas fa-star"></span>
+    <% end %>
+    <% (5 - @mentor.reviews.average(:rating).to_i).times do  %>
+        <span class="far fa-star"></span>
+    <% end %>
+    <br/>
+    <strong>$<%= @mentor.conversion %>/hr</strong>
+    <br/>
     <%= link_to '<button type="button">BOOK</button>'.html_safe, book_path %>
 </div>

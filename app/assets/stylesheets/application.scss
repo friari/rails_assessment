@@ -20,6 +20,10 @@ body {
     position: relative;
     min-height: 100vh;
 
+    .navbar-dark {
+        background-color: $color1;
+    }
+
     .main {
         padding-bottom: 3rem;
         margin-bottom: 0;
@@ -29,9 +33,13 @@ body {
         }
 
         .adv-search {
-            background-color: $color5;
+            background-color: $color1;
             color: $color3;
             min-height: 100vh;
+        }
+
+        .index {
+            background-color: $color4;
         }
     }
 

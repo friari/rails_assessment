@@ -1,3 +1,4 @@
+<div class="container">
 <h1>My Profile</h1>
 
 <h3>User Details</h3>
@@ -14,14 +15,20 @@
 
 <h3>Mentor Details</h3>
 <% if !(@mentor_details) %>
-    <p>You are not a mentor</p>
-    <%= link_to 'become a mentor', new_mentor_path%> 
+    <h5>You are not a mentor</h5>
+    <%= link_to 'Become a Trainer', new_mentor_path%> 
 <% else %>
-<p>Rate: $<%= @mentor_details.conversion %>/hr</p>
-<p>About Me: <%= @mentor_details.about_me %></p>
-<p>Mentor Pic <%=  image_tag @mentor_details.picture  %></p>
-<%= link_to 'update mentor info', edit_mentor_path(@mentor_details) %>
-<%# <%= link_to 'Destroy', @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %> 
+<h5>Rate: $<%= @mentor_details.conversion %>/hr</h5>
+<h5>About Me:</h5>
+<h5><%= @mentor_details.about_me %></h5>
+<% if @mentor_details.picture.attached? %>
+    <h5>Mentor Pic:</h5>
+    <%=  image_tag @mentor_details.picture, class: "img-fluid", width: "20%", height: "auto"  %><br/><br/>
+<% end %>
+<div class="btn-group" role="group" aria-label="Update Trainer Info or Delete Trainer Posting">
+    <%= link_to '<button type="button" class="btn btn-secondary">Update Trainer Info</button>'.html_safe, edit_mentor_path(@mentor_details) %>
+    <%= link_to '<button type="button" class="btn btn-secondary">Delete Trainer Posting</button>'.html_safe, @mentor_details, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
 <% end %>
 
 
@@ -53,7 +60,7 @@
             <p>Email: <%= User.find(client.user_id).email %> | Contact Number: <%= User.find(client.user_id).contact_number.to_s.rjust(10, "0") %></p>
         <% end %>
     <% end %>
-
+</div>
 
 
 

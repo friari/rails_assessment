@@ -14,7 +14,7 @@ class MentorsController < ApplicationController
     def index
         #shows all mentor listings or shows with search params
         @search = Mentor.ransack(params[:q])
-        @mentors = @search.result(distinct: true).includes(:user, :skills)
+        @mentors = @search.result(distinct: true).includes(:user, :skills).page(params[:page]).per(9)
         @mentor = Mentor.new
         @users = User.all
     end
