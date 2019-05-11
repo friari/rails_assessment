@@ -23,6 +23,9 @@ We wanted to remedy the lack of Performing Arts application available on the web
 * Become a trainer with ease!
 * Learn any type of Performing arts topic!
 * Review system to find the most reliable and high quality trainers
+* Easily manage your bookings as a Mentor!
+* Edit your detials with a few clicks
+* Become a part of a PA community within your City!
 
 
 #### Screenshots
@@ -50,8 +53,11 @@ We wanted to remedy the lack of Performing Arts application available on the web
 * Trainer:
     * I want to easily be able to change my details in regards to my training without hassle.
 #### Workflow Diagram
+![Application Data](README_imgs/Userflow.jpg)
+
 #### Wireframes
 #### ERD
+![Application Data](README_imgs/Entertrainer_ERD_Final.jpeg)
 
 ### Planning Process
 #### Project plan & timeline
@@ -211,7 +217,7 @@ Git was our Source control platform, We created a Dev branch that would be the s
 
 #### Provide an overview and description of your Testing process.
 
-We created some automated tests using Cypress. These tests were created by testing important funcitonality of the application. Tests such as, sign in, sign up, booking a trainer, sign out, edit information and more. TBA 
+We created some automated tests using Cypress. These tests were created by testing important funcitonality of the application. Tests such as, sign in, sign up, booking a trainer, sign out, edit information and more. Anything that are vital to the functionality of the User to use our application.  
 
 #### Discuss and analyse requirements related to information system security.
 
