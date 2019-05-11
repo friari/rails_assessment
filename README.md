@@ -28,7 +28,29 @@ We wanted to remedy the lack of Performing Arts application available on the web
 * Become a part of a PA community within your City!
 
 
-#### Screenshots
+### Screenshots
+
+#### Landing Page
+![Application Data](README_imgs/app_home.png)
+
+#### Sign Up
+![Application Data](README_imgs/app_sign_up.png)
+
+#### Mentors
+![Application Data](README_imgs/app_mentors.png)
+
+#### Profile Page
+![Application Data](README_imgs/app_profile.png)
+
+#### Show Page
+![Application Data](README_imgs/app_show.png)
+
+#### Confirm Booking page
+![Application Data](README_imgs/app_confirm.png)
+
+
+
+
 
 ### Tech Stack
 ![Application Data](README_imgs/Application_Data.png)
@@ -58,6 +80,11 @@ We wanted to remedy the lack of Performing Arts application available on the web
 ![Application Data](README_imgs/Userflow.jpg)
 
 #### Wireframes
+![Wireframes](README_imgs/Wireframe_1.png)
+![Wireframes](README_imgs/Wireframe_2.png)
+![Wireframes](README_imgs/Wireframe_3.png)
+![Wireframes](README_imgs/Wireframe_4.png)
+![Wireframes](README_imgs/Wireframe_5.png)
 #### ERD
 ![Application Data](README_imgs/Entertrainer_ERD_Final.jpeg)
 
