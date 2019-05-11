@@ -10,7 +10,7 @@
                                 <%= link_to image_tag("default_avatar.png", class: "img-fluid card-img-top", width: "100%", height: "auto"), mentor_path(mentor.id), class: "stretched-link" %>
                             <% end %>
                             <div class="card-body h-50 p-10">
-                                <h3 class="card-title mb-0"><%= mentor.user.full_name %></h3>
+                                <h5 class="card-title mb-0"><%= mentor.user.full_name %></h5>
                                 <% mentor.reviews.average(:rating).to_i.times do %>
                                     <span class="fas fa-star"></span>
                                 <% end %>

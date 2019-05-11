@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid show-column">
     <div class="row">
         <%= render 'mentor' %>
         <div class="col-md-8">
             <div class="pb-2 mt-4 mb-2 border-bottom">
-                <h1><%= @mentor.user.full_name  %></h1>
+                <h1 class="show"><%= @mentor.user.full_name  %></h1>
             </div>
             <h2>About Me</h2>
                 <p><%= @mentor.about_me %></p>

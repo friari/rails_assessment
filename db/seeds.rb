@@ -42,6 +42,21 @@ cities = ["Sydney", "Melbourne", "Adelaide", "Perth", "Canberra", "Darwin", "Bri
 
 end
 
+User.create(
+    first_name: "Testy", 
+    last_name: "McTest",
+    email: "test@test.com",
+    date: Faker::Date.birthday(18, 65),
+    contact_number: Faker::Number.leading_zero_number(10),
+    country: Faker::Address.country,
+    state: Faker::Address.state,
+    city: "Sydney",
+    postcode: Faker::Address.postcode,
+    suburb: Faker::Address.city,
+    password: "test123",
+    password_confirmation: "test123"
+)
+
 arr= []
 while arr.uniq.length <= 25
     arr.push rand(1...40)
@@ -53,7 +68,7 @@ if Mentor.count == 0
     for i in 1..20
         random_user = users[uniq_arr[i-1]]
         mentor = Mentor.create(
-            rate: Faker::Number.number(4).,
+            rate: Faker::Number.number(4),
             about_me: Faker::GreekPhilosophers.quote,
             user_id: random_user.id
         )
