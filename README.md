@@ -40,7 +40,9 @@ We wanted to remedy the lack of Performing Arts application available on the web
 ![Utilities](README_imgs/Utilities.png)
 
 ### Design documentation
-#### Design process
+### Design process
+#### Color Scheme
+![Color Scheme](README_imgs/Entertrainer_Color_scheme.png)
 #### User Stories
 * User:
     * I want to be able to see and view a profile of a trainer to see more detailed information on them.
@@ -81,7 +83,9 @@ Documentation, presenation and automated testing completion.
 Submission. 
 
 #### Trello Screenshots
-
+![Trello](README_imgs/Trello_app_1.png)
+![Trello](README_imgs/trello_app_2.png)
+![Trello](README_imgs/trello_app_3.png)
 #### Instructions
 #### Rails Local
 1. bundle install
