@@ -25,11 +25,19 @@ body {
     }
 
     #title {
-        color: $color2;
+        color: $color5;
     }
 
     p, .card, small, .show, h3, h5 {
         font-family: 'Montserrat', sans-serif;
+    }
+    
+    .card {
+        background-color: $color5;
+    }
+
+    .rev-card {
+        background-color: $color2;
     }
 
     .navbar-dark {
@@ -37,10 +45,10 @@ body {
     }
 
     .main {
-        min-height: calc(100vh);
+        min-height: 100vh;
         padding-bottom: 3rem;
         margin-bottom: 0;
-        background-color: $color3;
+        background-color: $color5;
 
         .home-background {
             min-height: calc(100vh - 3rem);
@@ -54,17 +62,26 @@ body {
             }
         }
 
+        .mentor {
+            min-height: calc(100vh - 3rem);
+            background-color: $color2;
+        }
+
+        .show-column {
+            background-color: $color3;
+        }
+
         .mentors_name {
             margin-bottom: 4px;
         }
 
         .adv-search {
-            background-color: $color4;
+            background-color: $color2;
             min-height: calc(100vh - 3rem);
         }
 
         .index {
-            background-color: $color5;
+            background-color: $color3;
         }
     }
 
@@ -75,7 +92,7 @@ body {
         width: 100%;
         height: 3rem; /* Set the fixed height of the footer here */
         line-height: auto; /* Vertically center the text there */
-        background-color: $color3;
+        background-color: $color5;
     }
 
     #footer {

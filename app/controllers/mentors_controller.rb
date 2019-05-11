@@ -83,6 +83,9 @@ class MentorsController < ApplicationController
     end
 
     def book
+        
+
+        
         #shows pre-stripe booking message
         stripe_session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
