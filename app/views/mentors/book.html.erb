@@ -1,11 +1,8 @@
 
-<% if current_user.mentor.id  == params[:id].to_i  %>
-  <h1>Sorry you can not book yourself!</h1>
-  <p>payment will not go ahead</p>
-  <%= link_to 'back to trainers', mentors_path %>
-<% else %>
 
-    <h1>Booking Confirmation</h1>
+
+<% if @check_if_mentor == nil or current_user.mentor.id != params[:id].to_i %>
+  <h1>Booking Confirmation</h1>
   <h2><%= @mentor.user.full_name %></h2>
 
   <p>You are about to book <strong><%= @mentor.user.full_name %></strong>, to book, please pay the hourly rate of $<%= @mentor.conversion %></p>
@@ -13,6 +10,11 @@
   <button id ="stripePayment">$<%= @mentor.conversion %> </button>
 
   <%= javascript_include_tag "payment_button" %>
+
+  <% else %>
+  <h1>Sorry you can not book yourself!</h1>
+  <p>payment will not go ahead</p>
+  <%= link_to 'back to trainers', mentors_path %> %>
 
 
   <script> 
@@ -30,4 +32,9 @@
   });
   </script>
 
-  <% end %>
+
+   <% end %>
+
+
+  
+ 

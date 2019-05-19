@@ -14,7 +14,7 @@ class MentorsController < ApplicationController
     def index
         #shows all mentor listings or shows with search params
         @search = Mentor.ransack(params[:q])
-        @mentors = @search.result(distinct: true).includes(:user, :skills).page(params[:page]).per(9)
+        @mentors = @search.result(distinct: true).includes(:user, :skills).where.not(id:current_user.mentor.id).page(params[:page]).per(9)
         @mentor = Mentor.new
         @users = User.all
     end
@@ -83,7 +83,7 @@ class MentorsController < ApplicationController
     end
 
     def book
-        
+        @check_if_mentor = User.find(current_user.id).mentor
 
         
         #shows pre-stripe booking message
